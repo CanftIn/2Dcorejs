@@ -3,6 +3,4 @@
 
 ## screenshot
 
-![firstdraw](./screenshot/firstdraw.png)
-
-![seconddraw](./screenshot/seconddraw.png)
+![thirddraw](./screenshot/thirddraw.png)
