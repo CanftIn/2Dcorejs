@@ -57,12 +57,12 @@ function userControl(event) {
     if (keycode === 70) {//f
         var r1 = new Rectangle(new Vec2(gEngine.Core.mAllObjects[gObjectNum].mCenter.x,
                 gEngine.Core.mAllObjects[gObjectNum].mCenter.y),
-                Math.random() * 30 + 10, Math.random() * 30 + 10);
+                Math.random() * 60 + 10, Math.random() * 60 + 10);
     }
     if (keycode === 71) {//g
         var r1 = new Circle(new Vec2(gEngine.Core.mAllObjects[gObjectNum].mCenter.x,
                 gEngine.Core.mAllObjects[gObjectNum].mCenter.y),
-                Math.random() * 10 + 20);
+                Math.random() * 40 + 20);
     }
 
     // clear window
