@@ -1,12 +1,12 @@
 "use strict";
 
-var Rectangle = function (center, width, height, fix) {
+var Rectangle = function (center, width, height, mass, friction, restitution) {
 
-    RigidShape.call(this, center);
+    RigidShape.call(this, center, mass, friction, restitution);
     this.mType = "Rectangle";
-    this.mFix = fix;
     this.mWidth = width;
     this.mHeight = height;
+    this.mBoundRadius = Math.sqrt(width * width + height * height) / 2;
     this.mVertex = [];
     this.mFaceNormal = [];  // facenormal is unit vector array
 

@@ -4,3 +4,6 @@
 ## screenshot
 
 ![thirddraw](./screenshot/thirddraw.png)
+
+## Collision
+![Collision](./screenshot/collision.png)

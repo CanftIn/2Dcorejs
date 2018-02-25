@@ -61,12 +61,14 @@ gEngine.Core = (function () {
         mPreviousTime = mCurrentTime;
         mLagTime += mElapsedTime;
 
-        while (mLagTime >= kMPF) {
-            mLagTime -= kMPF;
-            update();
-        }
         updateUIEcho();
         draw();
+
+        while (mLagTime >= kMPF) {
+            mLagTime -= kMPF;
+            gEngine.Physics.collision();
+            update();
+        }
     };
     var initializeEngineCore = function () {
         runGameLoop();
@@ -77,7 +79,8 @@ gEngine.Core = (function () {
         mAllObjects: mAllObjects,
         mWidth: mWidth,
         mHeight: mHeight,
-        mContext: mContext
+        mContext: mContext,
+        mUpdateIntervalInSeconds: mUpdateIntervalInSeconds
     };
     return mPublic;
 }());

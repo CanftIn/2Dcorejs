@@ -1,15 +1,27 @@
 "use strict";
 
-function RigidShape(center) {
+function RigidShape(center, mass, friction, restitution) {
     this.mCenter = center;
+
     //angle
-    this.mAngle = 0;//Math.random() * 90;
+    this.mAngle = 0;
+
+    this.mBoundRadius = 0;
+
     gEngine.Core.mAllObjects.push(this);
 }
 
 // anime
 RigidShape.prototype.update = function () {
-    if (this.mCenter.y < gEngine.Core.mHeight &&  this.mFix !== 0) {
-        this.move(new Vec2(0, 1));
+};
+
+RigidShape.prototype.boundTest = function (otherShape) {
+    var vFrom1to2 = otherShape.mCenter.subtract(this.mCenter);
+    var rSum = this.mBoundRadius + otherShape.mBoundRadius;
+    var dist = vFrom1to2.length();
+    if (dist > rSum) {
+        //not overlapping
+        return false;
     }
+    return true;
 };

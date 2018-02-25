@@ -53,14 +53,6 @@ function userControl(event) {
         gEngine.Core.mAllObjects[gObjectNum].rotate(0.1);
     }
 
-    // Toggle gravity with the H key
-    if (keycode === 72) { //H
-        if (gEngine.Core.mAllObjects[gObjectNum].mFix === 0)
-            gEngine.Core.mAllObjects[gObjectNum].mFix = 1;
-        else
-            gEngine.Core.mAllObjects[gObjectNum].mFix = 0;
-    }
-    
     // draw rectangle && circle
     if (keycode === 70) {//f
         var r1 = new Rectangle(new Vec2(gEngine.Core.mAllObjects[gObjectNum].mCenter.x,

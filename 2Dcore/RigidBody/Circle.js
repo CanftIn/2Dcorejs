@@ -1,11 +1,10 @@
 "use strict";
 
-var Circle = function (center, radius, fix) {
-    RigidShape.call(this, center);
+var Circle = function (center, radius, mass, friction, restitution) {
+    RigidShape.call(this, center, mass, friction, restitution);
     this.mType = "Circle";
-
     this.mRadius = radius;
-    this.mFix = fix;
+    this.mBoundRadius = radius;
     //The start point of line in circle
     this.mStartpoint = new Vec2(center.x, center.y - radius);
 };
