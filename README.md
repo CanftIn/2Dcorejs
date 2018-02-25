@@ -6,8 +6,11 @@
 ![thirddraw](./screenshot/thirddraw.png)
 
 ## Collision
+
 **circle collision**
+
 ![Collision](./screenshot/collision.png)    
 
-**all rigidBody collision**
+**all rigidbody collision**
+
 ![allcollision](./screenshot/allcollision.png)
