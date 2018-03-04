@@ -7,6 +7,7 @@ var Circle = function (center, radius, mass, friction, restitution) {
     this.mBoundRadius = radius;
     //The start point of line in circle
     this.mStartpoint = new Vec2(center.x, center.y - radius);
+    this.updateInertia();
 };
 
 var prototype = Object.create(RigidShape.prototype);
@@ -37,4 +38,12 @@ Circle.prototype.draw = function (context) {
     //context.lineTo(this.mCenter.x, this.mCenter.y);
     context.closePath();
     context.stroke();
+};
+
+Circle.prototype.updateInertia = function () {
+    if (this.mInvMass === 0) {
+        this.mInertia = 0;
+    } else {
+        this.mInertia = (1 / this.mInvMass) * (this.mRadius * this.mRadius) / 12;
+    }
 };

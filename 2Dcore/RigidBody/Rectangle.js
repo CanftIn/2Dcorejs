@@ -25,6 +25,8 @@ var Rectangle = function (center, width, height, mass, friction, restitution) {
     this.mFaceNormal[2] = this.mFaceNormal[2].normalize();
     this.mFaceNormal[3] = this.mVertex[0].subtract(this.mVertex[1]);
     this.mFaceNormal[3] = this.mFaceNormal[3].normalize();
+
+    this.updateInertia();
 };
 
 var prototype = Object.create(RigidShape.prototype);
@@ -63,4 +65,16 @@ Rectangle.prototype.draw = function (context) {
     context.strokeRect(0, 0, this.mWidth, this.mHeight);
 
     context.restore();
+};
+
+
+Rectangle.prototype.updateInertia = function () {
+    // Expect this.mInvMass to be already inverted!
+    if (this.mInvMass === 0) {
+        this.mInertia = 0;
+    } else {
+        //inertia=mass*width^2+height^2
+        this.mInertia = (1 / this.mInvMass) * (this.mWidth * this.mWidth + this.mHeight * this.mHeight) / 12;
+        this.mInertia = 1 / this.mInertia;
+    }
 };

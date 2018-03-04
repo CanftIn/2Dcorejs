@@ -10,6 +10,9 @@ gEngine.Core = (function () {
     mCanvas.height = mHeight;
     mCanvas.width = mWidth;
 
+    var mGravity = new Vec2(0, 10);
+    var mMovement = false;
+
     var mCurrentTime, mElapsedTime, mPreviousTime = Date.now(), mLagTime = 0;
     var kFPS = 60;          // Frames per second
     var kFrameTime = 1 / kFPS;
@@ -24,14 +27,25 @@ gEngine.Core = (function () {
                 "<li>Id: " + gObjectNum + "</li>" +
                 "<li>Center: " + mAllObjects[gObjectNum].mCenter.x.toPrecision(3) + "," + mAllObjects[gObjectNum].mCenter.y.toPrecision(3) + "</li>" +
                 "<li>Angle: " + mAllObjects[gObjectNum].mAngle.toPrecision(3) + "</li>" +
+                "<li>Velocity: " + mAllObjects[gObjectNum].mVelocity.x.toPrecision(3) + "," + mAllObjects[gObjectNum].mVelocity.y.toPrecision(3) + "</li>" +
+                "<li>AngluarVelocity: " + mAllObjects[gObjectNum].mAngularVelocity.toPrecision(3) + "</li>" +
+                "<li>Mass: " + 1 / mAllObjects[gObjectNum].mInvMass.toPrecision(3) + "</li>" +
+                "<li>Friction: " + mAllObjects[gObjectNum].mFriction.toPrecision(3) + "</li>" +
+                "<li>Restitution: " + mAllObjects[gObjectNum].mRestitution.toPrecision(3) + "</li>" +
+                "<li>Movement: " + gEngine.Core.mMovement + "</li>" +
                 "</ul> <hr>" +
                 "<p><b>Control</b>: of selected object</p>" +
                 "<ul style=\"margin:-10px\">" +
                 "<li><b>Num</b> or <b>Up/Down Arrow</b>: Select Object</li>" +
                 "<li><b>WASD</b> + <b>QE</b>: Position [Move + Rotate]</li>" +
+                "<li><b>IJKL</b> + <b>UO</b>: Velocities [Linear + Angular]</li>" +
+                "<li><b>Z/X</b>: Mass [Decrease/Increase]</li>" +
+                "<li><b>C/V</b>: Frictrion [Decrease/Increase]</li>" +
+                "<li><b>B/N</b>: Restitution [Decrease/Increase]</li>" +
+                "<li><b>,</b>: Movement [On/Off]</li>" +
                 "</ul> <hr>" +
                 "<b>F/G</b>: Spawn [Rectangle/Circle] at selected object" +
-                "<p><b>H</b>: Fix object</p>" +
+                "<p><b>H</b>: Excite all objects</p>" +
                 "<p><b>R</b>: Reset System</p>" +
                 "<hr>";
     };
@@ -80,7 +94,9 @@ gEngine.Core = (function () {
         mWidth: mWidth,
         mHeight: mHeight,
         mContext: mContext,
-        mUpdateIntervalInSeconds: mUpdateIntervalInSeconds
+        mGravity: mGravity,
+        mUpdateIntervalInSeconds: mUpdateIntervalInSeconds,
+        mMovement: mMovement
     };
     return mPublic;
 }());
